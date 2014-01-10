@@ -1,0 +1,26 @@
+/* _mixins.scss */
+@function black($opacity){
+    @return rgba(0,0,0,$opacity)
+}
+@function white($opacity){
+    @return rgba(255,255,255,$opacity)
+}
+
+@mixin border-radius($radius) {
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	-ms-border-radius: $radius;
+	-o-border-radius: $radius;
+	border-radius: $radius;
+}
+
+@mixin background-gradient($color1, $color2)	{
+	background-image: -webkit-linear-gradient($color1 0%, $color2 100%); 
+	background-image: -moz-linear-gradient($color1 0%, $color2 100%); 
+	background-image: -o-linear-gradient($color1 0%, $color2 100%); 
+	background-image: linear-gradient($color1 0%, $color2 100%);
+}
+
+@mixin box-emboss($width, $opacity, $opacity2){
+    box-shadow: white($opacity) 0 $width 0, inset black($opacity2) 0 $width 0;
+}

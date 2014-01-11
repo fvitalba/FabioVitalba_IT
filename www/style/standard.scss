@@ -5,23 +5,23 @@
 @import 'mixins';
 
 //Website Style Variables
-$font-LondonMM: London_MM, LondonMM_Chrome, LondonMM_IE, Arial, Helvetica, sans-serif;
+$font-LondonMM: LondonMM, LondonMM_Chrome, LondonMM_IE, Arial, Helvetica, sans-serif;
 $font-RemachineScript: RemachineScript, RemachineScript_Chrome, RemachineScript_IE, Arial, Helvetica, sans-serif;
 $font-SLC: SLC, SLC_Chrome, SLC_IE, Courier New, Courier, monospace;
+$font-Arial: Arial, Helvetica, sans-serif;
 
-$text-size-default: 16px;
+$font-size-default: 16px;
+$font-size-small: 0.7em;
 
-$text-color-default: #555;
-$text-color-secondary: #555;
-$text-color-bonus: #555;
+$font-color-default: #555;
+$font-color-secondary: #fff;
+$font-color-bonus: #ff0;
 
 $background-color-default: #ddd;
-$background-color-secondary: #ddd;
-$background-color-bonus: #ddd;
-
-$color-default: #ddd;
-$color-secondary: #ddd;
-$color-bonus: #ddd;
+$background-color-secondary: #628;
+$background-color-secondary-dark: #4d126b;
+$background-color-bonus: #936c90;
+$background-color-bonus-dark: #81587e;
 
 $page-width: 1000px;
 
@@ -29,8 +29,8 @@ $page-width: 1000px;
 //Default HTML Code
 html {
 	font-family: $font-LondonMM;
-	font-size: $text-size-default;
-	color: $text-color-default;
+	font-size: $font-size-default;
+	color: $font-color-default;
 
 	margin: 0px;
 	padding: 0px;
@@ -38,56 +38,336 @@ html {
 	height: 100%;
 
 	background-color: $background-color-default;
-	@include background-gradient(#ddd, #aaa);
+	@include background-gradient(#eee, #ddd);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
 }
 
 body {
-	width: $page-width;
+	width: 100%;
 	height: 100%;
 	margin: 0px;
-	margin-left: auto;
-	margin-right: auto;
 	padding: 0px;
+
+	padding-top: 75px;
+}
+
+header	{
+	background-color: $background-color-secondary;
+	width: 100%;
+	position: fixed;
+	display: inline-block;
+
+	margin-top: -75px;
+
+	h1	{
+		color: $font-color-secondary;
+	}
+
+	z-index: 10;
+}
+
+nav {
+
+}
+
+section {
+
+}
+
+article	{
+	margin-top: 75px;
+}
+
+aside {
+
+}
+
+footer {
+	background-color: $background-color-secondary;
+	padding-top: 20px;
+	padding-bottom: 20px;
+
+	margin-top: 50px;
 }
 
 h1	{
 	font-family: $font-RemachineScript;
-	font-size: 3.157em;
+	font-size: 3.657em;
 	display: inline;
+	font-weight: normal;
 }
 
 h2 {
 	font-size: 2.369em;
-	display: inline;
+	margin: 0px;
+	padding: 0px;
+	padding-bottom: 25px;
 }
 
 h3 {
 	font-size: 1.777em;
-	display: inline;
+	margin: 0px;
+	padding: 0px;
 }
 
 h4	{
 	font-size: 1.333em;
-	display: inline;
+	margin: 0px;
+	padding: 0px;
 }
 
 p	{
-	font-family: $font-LondonMM;
+	font-family: $font-Arial;
 	text-align: justify;
 	@include border-radius(15px);
-	
-	& .code	{
-		font-family: $font-SLC;
-		border: 2px solid black;
-		@include box-emboss(1px, 0.4, 0.6);
-		width: 80%;
+}
+
+a	{
+	text-decoration: none;
+}
+
+input	{
+	height: 45px;
+	width: 235px;
+
+	padding-left: 15px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+
+	@include border-radius(5px);
+
+	&[type='submit']	{
+		color: $font-color-secondary;
+		background-color: $background-color-secondary;
+
+		font-weight: bold;
+
+		float: right;
 	}
+}
+
+label	{
+	height: 45px;
+
+	font-family: $font-Arial;
+	font-size: $font-size-small;
+	text-align: justify;
+	word-wrap: break-word;
+
+	padding-left: 15px;
 }
 
 //Classes
 .code	{
 	font-family: $font-SLC;
+	font-size: 0.9em;
+
+	background-color: $background-color-bonus;
+	
+	line-height: 1.4em;
+	color: $font-color-secondary;
+	@include box-emboss(3px, 0.4, 0.3);
+
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+
+	padding: 0px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+
+	#code-title	{
+		@extend h3;
+		color: $font-color-bonus;
+		height: 35px;
+		display: inline-block;
+		vertical-align: middle;
+		line-height: 30px;
+	}
+
+	#code-line-dark	{
+		background-color: $background-color-bonus-dark;
+		width: $page-width * 0.8 - 10;
+		display: inline-block;
+		padding-left: 10px;
+		overflow: hidden;
+	}
+
+	#code-line-bright	{
+		background-color: $background-color-bonus;
+		width: $page-width * 0.8 - 10;
+		display: inline-block;
+		padding-left: 10px;
+		overflow: hidden;
+	}
 }
 
+.center-align-page	{
+	width: $page-width;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.lfloat	{
+	float: left;
+}
+
+.rfloat	{
+	float: right;
+}
+
+.clearfloat	{
+	clear: float;
+}
+
+.nav-pages	{
+	@extend h3;
+	@extend .rfloat;
+
+	color: $font-color-secondary;
+	vertical-align: middle;
+	line-height: 60px;
+	text-decoration: none;
+	text-align: center;
+
+	padding: 0px;
+	padding-left: 15px;
+	padding-right: 15px;
+
+	height: 60px;
+	width: 85px;
+	background-color: $background-color-secondary;
+	display: inline-block;
+
+	@include transition-all(.5s);
+
+	&:hover	{
+		text-decoration: none;
+		width: 85px;
+		background-color: $background-color-secondary-dark;
+	}
+
+	&:active	{
+		text-decoration: underline;
+		@include text-decoration-color($font-color-bonus);
+		background-color: $background-color-secondary-dark;
+	}
+}
+
+.article-icon	{
+	position: absolute;
+	height: 60px;
+	width: 60px;
+	background-color: $background-color-bonus;
+	@include background-gradient($background-color-bonus, $background-color-secondary);
+	display: inline-block;
+
+	margin-left: -33px;
+	margin-top: -33px;
+
+	font-family: $font-LondonMM;
+	text-align: center;
+	color: $font-color-secondary;
+	font-weight: bold;
+	vertical-align: middle;
+	line-height: 60px;
+
+	@include box-emboss(2px, 0, 0.3);
+	border: 3px solid white;
+	@include border-radius(36px);
+
+	&:active	{
+		background-color: $background-color-secondary;
+		@include box-emboss-inverted(2px, 0, 0.5);
+		@include background-gradient($background-color-secondary, $background-color-bonus);
+	}
+
+	z-index: 0;
+}
+
+.article-information	{
+	position: absolute;
+	height: 40px;
+	background-color: $background-color-bonus;
+	@include background-gradient($background-color-bonus, $background-color-secondary);
+	display: inline-block;
+
+	margin-left: 0px;
+	margin-top: -23px;
+	padding-left: 40px;
+	padding-right: 10px;
+
+	font-family: $font-LondonMM;
+	color: $font-color-secondary;
+	font-weight: bold;
+	vertical-align: middle;
+	line-height: 40px;
+
+	@include box-emboss(2px, 0, 0.4);
+	border: 3px solid white;
+
+	z-index: 0;
+}
+
+.article-content	{
+	margin-top: 40px;
+	font-family: $font-Arial;
+}
+
+.article-form-background	{
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 10px;
+	padding-top: 25px;
+	padding-bottom: 25px;
+
+	border: 3px solid white;
+	@include box-shadow(0, 1px, 1px, rgba(0, 0, 0, 0.5));
+
+	background-color: $background-color-bonus;
+	@include background-gradient($background-color-bonus, $background-color-secondary);
+}
+
+.article-form-content	{
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
+	margin-bottom: auto;
+	vertical-align: middle;
+
+	color: $font-color-secondary;
+
+	h2	{
+		text-shadow: 2px 2px $background-color-secondary-dark;
+	}
+}
+
+.credits	{
+	height: 200px;
+	width: 200px;
+	background-color: $background-color-bonus;
+	@include background-gradient($background-color-bonus, $background-color-secondary);
+
+	margin-left: auto;
+	margin-right: auto;
+
+	color: $font-color-secondary;
+	font-weight: bold;
+	text-align: center;
+	vertical-align: middle;
+	word-wrap: break-word;
+
+	@include border-radius(200px);
+	@include box-emboss(2px, 0, 0.4);
+	border: 3px solid white;
+
+	#credits-text	{
+		margin-top: 40%;
+		display: inline-block;
+	}
+}
 
 //IDs

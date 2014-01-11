@@ -24,3 +24,45 @@
 @mixin box-emboss($width, $opacity, $opacity2){
     box-shadow: white($opacity) 0 $width 0, inset black($opacity2) 0 $width 0;
 }
+
+@mixin box-emboss-inverted($width, $opacity, $opacity2){
+    box-shadow: black($opacity) 0 $width 0, inset white($opacity2) 0 $width 0;
+}
+
+@mixin box-shadow($top, $left, $blur, $color, $inset:"") {
+    -webkit-box-shadow:$top $left $blur $color #{$inset};
+    -moz-box-shadow:$top $left $blur $color #{$inset};
+    box-shadow:$top $left $blur $color #{$inset};
+}
+
+@mixin alternating-line-color($color1, $color2, $size)	{
+	background-image: -webkit-linear-gradient($color1 50%, $color2 50%); 
+	background-image: -moz-linear-gradient($color1 50%, $color2 50%); 
+	background-image: -o-linear-gradient($color1 50%, $color2 50%); 
+	background-image: linear-gradient($color1 50%, $color2 50%);
+	background-size: 100% $size;
+}
+
+@mixin transition-width($time)	{
+	-webkit-transition: width $time;
+	-moz-transition: width $time;
+	transition: width $time;
+}
+
+@mixin transition-color($time)	{
+	-webkit-transition: color $time;
+	-moz-transition: color $time;
+	transition: color $time;
+}
+
+@mixin transition-all($time)	{
+	-webkit-transition: all $time;
+	-moz-transition: all $time;
+	transition: all $time;
+}
+
+@mixin text-decoration-color($color)	{
+	-webkit-text-decoration-color: $color;
+	-moz-text-decoration-color: $color;
+	text-decoration-color: $color;
+}

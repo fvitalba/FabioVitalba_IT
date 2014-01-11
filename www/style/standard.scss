@@ -236,7 +236,7 @@ label	{
 	padding-right: 15px;
 
 	height: 60px;
-	width: 85px;
+	width: 110px;
 	background-color: $background-color-secondary;
 	display: inline-block;
 
@@ -244,7 +244,7 @@ label	{
 
 	&:hover	{
 		text-decoration: none;
-		width: 85px;
+		width: 110px;
 		background-color: $background-color-secondary-dark;
 	}
 
@@ -368,6 +368,19 @@ label	{
 		margin-top: 40%;
 		display: inline-block;
 	}
+}
+
+.nav-pages-dropdown	{
+	position: absolute;
+	display: inline-block;
+	width: 135px;
+
+	background: $background-color-secondary-dark;
+	visibility: hidden;
+	z-index: 10;
+
+	margin-top: 60px;
+	margin-left: 145px;
 }
 
 //IDs

@@ -50,26 +50,38 @@
 					
 					<div class="rfloat">
 						<nav>
-							<a href="#">
-								<div class="nav-pages">
-									Button
-								</div>
-							</a>
-							<a href="#">
-								<div class="nav-pages">
-									Button
-								</div>
-							</a>
-							<a href="#">
-								<div class="nav-pages">
-									Button
-								</div>
-							</a>
-							<a href="#">
-								<div class="nav-pages">
-									Button
-								</div>
-							</a>
+							<?php
+								for ($i = $database->getPageCount(); $i > 0; $i--)	{
+									if ($database->getPage($i)["parent"] == NULL)	{
+										$childPageCount = $database->ChildPageCount($i);
+										if ($childPageCount > 0)	{
+											echo "<a href='#' onmouseover=\"mopen('nav-child-page-".$i."')\" onmouseout=\"mclosetime()\">";
+												echo "<div class='nav-pages'>";
+													echo $database->getPageName($i);
+												echo "</div>";
+											echo "</a>";
+
+											echo "<div class='nav-pages-dropdown' id='nav-child-page-".$i."' style='height: ".($childPageCount * 60)."px'>";
+												for ($j = 0; $j < $childPageCount; $j++)	{
+													$childPages = $database->getChildPages($i);
+													echo "<a href='#'>";
+														echo "<div class='nav-pages'>";
+															echo $childPages[$j]["name"];
+														echo "</div>";
+													echo "</a>";
+												}
+											echo "</div>";
+
+										}	else	{
+											echo "<a href='#'>";
+												echo "<div class='nav-pages'>";
+													echo $database->getPageName($i);
+												echo "</div>";
+											echo "</a>";
+										}
+									}
+								}
+							?>
 						</nav>
 					</div>
 

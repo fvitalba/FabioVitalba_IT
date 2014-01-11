@@ -216,7 +216,7 @@ label {
   padding-left: 15px;
   padding-right: 15px;
   height: 60px;
-  width: 85px;
+  width: 110px;
   background-color: #662288;
   display: inline-block;
   -webkit-transition: all 0.5s;
@@ -225,7 +225,7 @@ label {
 }
 .nav-pages:hover {
   text-decoration: none;
-  width: 85px;
+  width: 110px;
   background-color: #4d126b;
 }
 .nav-pages:active {
@@ -357,4 +357,15 @@ label {
 .credits #credits-text {
   margin-top: 40%;
   display: inline-block;
+}
+
+.nav-pages-dropdown {
+  position: absolute;
+  display: inline-block;
+  width: 135px;
+  background: #4d126b;
+  visibility: hidden;
+  z-index: 10;
+  margin-top: 60px;
+  margin-left: 145px;
 }

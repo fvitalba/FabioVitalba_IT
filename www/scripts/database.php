@@ -2,17 +2,20 @@
 	class Database	{
 		
 		function database()	{
-			/*if (!mysql_connect('localhost', 'drockerhofit', 'vorUnuJ4:8Jy9'))	{
+
+			if (!mysql_connect('localhost', 'root', 'usbw'))	{
 				echo "Datenbankverbindung konnte nicht aufgebaut werden.";
 			}	else	{
-				if (!mysql_select_db('drockerhofit'))	{
+				if (!mysql_select_db('fabiovitalba'))	{
 					echo "Datenbank konnte nicht gefunden werden.";
 				}
-			}*/
+			}
+
 		}
 		
 		function doSQLQuery ($sqlQuery)	{
-			/*$ergebnis = mysql_query($sqlQuery);
+
+			$ergebnis = mysql_query($sqlQuery);
 			
 			$datensatz = array();
 			
@@ -20,23 +23,66 @@
 				array_push($datensatz, $row);
 			}
 			
-			return $datensatz;*/
+			return $datensatz;
+
 		}
 		
 		function doSimpleSQL ($sqlQuery)	{
-			//$ergebnis = mysql_query($sqlQuery);
+
+			$ergebnis = mysql_query($sqlQuery);
+
 		}
 		
-		function getTitle ($id)	{
-			/*
-			$titles = $this->doSQLQuery("SELECT * FROM titel WHERE ID=".$id);
-			if ($titles == NULL)	{
-				$title = "Titel nicht gefunden.";
+		function getPage ($id)	{
+			
+			$pages = $this->doSQLQuery("SELECT * FROM pages WHERE id=".$id);
+			if ($pages == NULL)	{
+				$page = NULL;
 			}	else	{
-				$title = $titles[0]["Text"];
+				$page = $pages[0];
 			}
-			return $title;
-			*/
+			return $page;
+
+		}
+
+		function ChildPageCount($id)	{
+
+			$pages = $this->doSQLQuery("SELECT * FROM pages WHERE parent=".$id);
+			
+			return count($pages);
+
+		}
+
+		function getPageName ($id)	{
+			
+			$pages = $this->doSQLQuery("SELECT * FROM pages WHERE id=".$id);
+			if ($pages == NULL)	{
+				$page = "Page not found.";
+			}	else	{
+				$page = $pages[0]["name"];
+			}
+			return $page;
+
+		}
+
+		function getPageCount ()	{
+
+			$pages = $this->doSQLQuery("SELECT * FROM pages");
+			
+			return count($pages);
+
+		}
+
+		function getChildPages($id)	{
+
+			$pages = $this->doSQLQuery("SELECT * FROM pages WHERE parent=".$id);
+			if ($pages == NULL)	{
+				return NULL;
+			}	else	{
+				return $pages;
+			}
+
+
 		}
 		
 		function getText ($id, $lang)	{

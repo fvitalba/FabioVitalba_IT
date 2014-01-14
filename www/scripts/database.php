@@ -33,6 +33,7 @@
 
 		}
 		
+		//Region for Page information
 		function getPage ($id)	{
 			
 			$pages = $this->doSQLQuery("SELECT * FROM pages WHERE id=".$id);
@@ -85,6 +86,8 @@
 
 		}
 		
+
+		//Region for article information
 		function getText ($id, $lang)	{
 			/*
 			if (strcasecmp($lang, "de") == 0)	{

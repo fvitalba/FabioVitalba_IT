@@ -83,9 +83,7 @@
 				return $pages;
 			}
 
-
 		}
-		
 
 		//Region for article information
 		function getText ($id, $lang)	{

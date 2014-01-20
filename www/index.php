@@ -51,6 +51,12 @@
 					<div class="rfloat">
 						<nav>
 							<?php
+								/* The first for-loop goes through all pages stored in the database. If the page has got no parent-page it means
+								 * that this page is definately a parent and therefore needs to be shown in the navigation. If we are printing a
+								 * parent, we need to print the children immediately after that. We store the child-pages in a div, which is hid
+								 * den by default and is managed through the script dropdown.php. The on-hover and on-click functions are manage
+								 * d on the parents navigation button.
+								 */
 								for ($i = $database->getPageCount(); $i > 0; $i--)	{
 									if ($database->getPage($i)["parent"] == NULL)	{
 										$childPageCount = $database->ChildPageCount($i);
